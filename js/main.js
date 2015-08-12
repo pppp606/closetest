@@ -1,7 +1,7 @@
 /**
 クローズテスト用 kuromojiを継承
 * @class closeTest
-* @method init 空白の問題文を生成
+* @method init 初期化 パラメータのセット
 * @method setProblem 空白の問題文を生成
 * @method check 正解率のチェック
 * @property {has} data 文章データ kuromoji.jsで形態素解析済み
@@ -71,13 +71,18 @@ $(function(){
       closetest.setProblem();
       $('.btn').addClass('active check');
       $('.btn span').html("チェック");
+      $('#change').css("color","#00e");
     });
 
+  //ボタン挙動
   $('#change').click(function(){
-    $('.testWording,.closeTest').slideToggle();
-    $('#score').hide();
-    $('.btn span').html("セット");
-    $('.btn').addClass('set').removeClass('check');
+    if($('.testWording').is(":hidden")){
+      $('.testWording,.closeTest').slideToggle();
+      $('#score').hide();
+      $('.btn span').html("セット");
+      $('.btn').addClass('set').removeClass('check');
+      $(this).css("color","#ccc");
+    }
     return false;
   });
 
@@ -88,6 +93,7 @@ $(function(){
     $('.btn span').html("チェック");
     $('.testWording,.closeTest').slideToggle();
     $('#score').hide();
+    $('#change').css("color","#00e");
     return false;
   });
 
@@ -99,7 +105,4 @@ $(function(){
     }
     return false;
   });
-
-
-
 });
